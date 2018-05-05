@@ -4,8 +4,6 @@ description: 'ISBN-13: 9780134494166'
 
 # Clean Architecture
 
-### 
-
 ## PART II Programming Prardigms
 
 ### Ch 3~6 Paradigms
