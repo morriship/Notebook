@@ -1,5 +1,5 @@
 # Table of contents
 
-* Initial page
+* [Notebook](README.md)
 * [Clean Architecture](clean-architecture.md)
 
