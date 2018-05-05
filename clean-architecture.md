@@ -16,14 +16,14 @@ description: 'ISBN-13: 9780134494166'
 
 ### Ch 7~11 SOLID Principles
 
-* **SRP: Singple Responsibility Principle**
-  * 元件只該因為一個\(唯一的\)理由而被更動
+* **SRP: Single Responsibility Principle**
+  * 元件只該因為單一\(唯一的\)理由而被更動
 * **OCP: Open-Closed Principle**
   * 讓功能容易被新增, 同時避免既有的組件被修改
 * **LSP: Liskov Substitution Principle**
 * **ISP: Interface Segregation Principle**
 * **DIP: Dependency Inversion Principle**
-  * 元件之間的應該依賴抽像化的 policy, 而不該是直接依賴 \(高耦合\)
+  * 元件之間的應該依賴抽像化的 policy, 而非直接依賴 \(高耦合\)
 
 ## PART IV Component Principle
 
@@ -72,20 +72,21 @@ description: 'ISBN-13: 9780134494166'
 * **Duplication**
   * 工程師經常對相似的程式碼做提煉, 但有時程式碼可能只是恰巧相似而非目的一致, 過一陣子後再來看這段相似的程式碼可能已經出現極大差異
   * **Vertically separating**
-    * 將 use cases 之間的程式碼提煉出來會增加耦合, 可能增加日後對單一 case 的修改難度
+    * 將 use cases 之間的程式碼提煉出來會增加耦合, 可能大幅增加日後對單一 case 的修改難度
   * **Horizontally separating**
-    * 盡量落實各層之間的獨立性, 避免像是因為 DB 資料與前端需求格式相似而直接把從 DB 撈出來的資料送到前端
+    * 盡量落實各層之間的獨立性, 避免像是 **因為 DB 資料與前端需求格式相似而直接把從 DB 撈出來的資料送到前端 **之類的狀況發生
 * **Decoupling Mode \(again\)**
   * **Source level**
-    * 我們可籍由控管元件之間的依賴關係減少修改單一元件後, 其餘元件必須跟著重新編譯的額外開銷.  \#monolithic structure
+    * 籍由控管元件之間的依賴關係減少修改單一元件後, 其餘元件必須跟著重新編譯的額外開銷.  \#monolithic structure
   * **Deployment level**
     * 利用 jar files、DLLs、shared libraries 減少抽換元件的成本 \(rebuild / redeploy\)
   * **Service level**
     * 透過切分 services 減少各元件之間的依賴性
-  * 一個 project 在不同時期可能會需要不同層級的解耦模式, 像是 services 的切分會增加人力與運算資源的開銷, 在運算需求不大時做這些是無意義的。 一個好的架構需要盡量保持解耦的可能性, 並且最好是可 reverse 的.
+  * 一個 project 在不同時期可能會需要不同層級的解耦模式, 像是 services 的切分會增加人力與運算資源的開銷, 在運算需求不大時做這些是無意義的。 一個好的架構需要盡量保持解耦的可能性, 並且是可 reverse 的.
 
-###  Ch. 17 Boundaries Drawing Lines
+### Ch. 17 Boundaries Drawing Lines
 
+* 
 ### Ch. 18 Boundary Anatomy
 
 ### Ch. 19 Policy and Level
