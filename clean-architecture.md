@@ -85,8 +85,12 @@ description: 'ISBN-13: 9780134494166'
   * 一個 project 在不同時期可能會需要不同層級的解耦模式, 像是 services 的切分會增加人力與運算資源的開銷, 在運算需求不大時做這些是無意義的。 一個好的架構需要盡量保持解耦的可能性, 並且是可 reverse 的.
 
 ### Ch. 17 Boundaries Drawing Lines
+  
+* 所謂的架構就是畫線(boundry)的藝術, 在開發初期僅會有少數的切分, 像是避免核心的商業邏輯被開發中的決策污染。銘記架構的設計是為了減少元件間的耦合, 盡量避免和商業邏輯無關的決策, 像是 fremework、database、web servers、utility libraries、dependency injection 等
+* **A coule of sad stories**
+  * 在某公司曾經有一個專案, 由於架構師在專案初期就決策將商業邏輯拆成三層服務, 但運算量需求並不大, 造成雖然三個服務都在同一台機器上做運算, 中間卻有著繁雜的溝通流程, 當新增 use case 時需對三層服務都做修改, 無故的浪費了大量的人力和運算資源
+  * 另一個更慘的故事是過早採用 SoA 的決策導致開發與測試變的極度困難, 但我懶得寫這段的筆記了所以就這樣吧
 
-* 
 ### Ch. 18 Boundary Anatomy
 
 ### Ch. 19 Policy and Level
