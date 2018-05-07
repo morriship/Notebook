@@ -86,7 +86,7 @@ description: 'ISBN-13: 9780134494166'
 
 ### Ch. 17 Boundaries Drawing Lines
   
-* 所謂的架構就是畫線(boundry)的藝術, 在開發初期僅會有少數的切分, 像是避免核心的商業邏輯被開發中的決策污染。銘記架構的設計是為了減少元件間的耦合, 盡量避免和商業邏輯無關的決策, 像是 fremework、database、web servers、utility libraries、dependency injection 等
+* 所謂的架構就是在元件間畫線(boundry)的藝術, 在開發初期僅會有少數的切分, 像是避免核心的商業邏輯被開發中的決策污染。銘記架構的設計是為了減少元件間的耦合, 盡量避免和商業邏輯無關的決策, 像是 fremework、database、web servers、utility libraries、dependency injection 等
 * **A coule of sad stories**
   * 在某公司曾經有一個專案, 由於架構師在專案初期就決策將商業邏輯拆成三層服務, 但運算量需求並不大, 造成雖然三個服務都在同一台機器上做運算, 中間卻有著繁雜的溝通流程, 當新增 use case 時需對三層服務都做修改, 無故的浪費了大量的人力和運算資源
   * 另一個更慘的故事是過早採用 SoA 的決策導致開發與測試變的極度困難, 但我懶得寫這段的筆記了所以就這樣吧
