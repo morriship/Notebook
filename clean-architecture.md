@@ -109,7 +109,6 @@ description: 'ISBN-13: 9780134494166'
   * 這種設計概念同 DIP/SAP, 讓較低階的 detail 依賴較高階的 interface 
 
 ### Ch. 18 Boundary Anatomy
-* 
 
 ### Ch. 19 Policy and Level
 
