@@ -92,6 +92,21 @@ description: 'ISBN-13: 9780134494166'
   * 另一個更慘的故事是過早採用 SoA 的決策導致開發與測試變的極度困難, 但我懶得寫這段的筆記了所以就這樣吧
 * **FitNess**
   * 這裡講述的是作者經歷過的一段故事, 內容聚瞧於前面幾篇講述的印證, 忘記的話還是直接回去翻翻書吧 (p.163)
+* **Which lines do you draw, and when do you draw them?**
+  * 在重要的事務以及不重要的事務間畫線, 像是 business rule 和 GUI 之間, GUI 跟 DB 之間, DB 以及 business rules 之間。有些人可能會認為 DB 和 business rule 的關係是密不可分的, 但實際上 business rule 並不需要和 DB 有關的任何事物儲如 schema、query language, 他們之間是可以透過抽像的 interface 去做溝通的。
+  * Interface 應該被包含於 business rule, 而 DB Access component 則是在線的另一端, DB Access component 需要明確知道 business rule 但反之則否。
+* **What about input and output?**
+  * 由於許多專案裡與使用者是透過 GUI 與系統互動, 造成有時 GUI 會被當成需要最先被決定的事項之一, 但他們忘了一個重要的原則: The IO is irrelevant.
+  * 同上, GUI 需要知道 Business rule, 但反之則否
+* **Plugin Architecture**
+  * 跟 Plugin Pattern 的概念相同, 當 Business rule 被清楚切分後, 任何在線另一端的元件都可被視為 plugin 做替換
+* **The Plugin Argument**
+  * Plugin 的 boundry 能視為一道防火牆, 確保核心的 Business rule 不會被污染
+  * 由於有明確的 boundry, 線兩邊的修改並不影響到對方, 因此每個元件可依照自己的步調做開發與修改
+  * 將 project 套用 SRP 將會清楚了解線應該被畫在哪裡
+* **Concolusion**
+  * 首先將 project 分割成不同功能的元件, 再將這些元件做歸納為 business rule 或 plugin, 最後再將依賴關係建立出來 (plugin 單方面依賴 business rule)
+  * 這種設計概念同 DIP/SAP, 讓較低階的 detail 依賴較高階的 interface 
 
 ### Ch. 18 Boundary Anatomy
 
