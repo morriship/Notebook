@@ -86,29 +86,30 @@ description: 'ISBN-13: 9780134494166'
 
 ### Ch. 17 Boundaries Drawing Lines
   
-* 所謂的架構就是在元件間畫線(boundry)的藝術, 在開發初期僅會有少數的切分, 像是避免核心的商業邏輯被開發中的決策污染。銘記架構的設計是為了減少元件間的耦合, 盡量避免和商業邏輯無關的決策, 像是 fremework、database、web servers、utility libraries、dependency injection 等
+* 所謂的架構設計就是在元件間畫線(boundry)的藝術, 在開發初期僅會有少數的切分, 主要是避免核心的 Business Rule 被其餘決策污染。銘記架構的設計是為了減少元件間的耦合, 盡量避免和 Business Rule 無關的決策, 像是 fremework、database、web servers、utility libraries、dependency injection 等
 * **A coule of sad stories**
-  * 在某公司曾經有一個專案, 由於架構師在專案初期就決策將商業邏輯拆成三層服務, 但運算量需求並不大, 造成雖然三個服務都在同一台機器上做運算, 中間卻有著繁雜的溝通流程, 當新增 use case 時需對三層服務都做修改, 無故的浪費了大量的人力和運算資源
+  * 在某公司曾經有一個專案, 由於架構師在專案初期就決策將 Business Rule 拆成三層服務, 但運算量需求並不大, 造成雖然三個服務都在同一台機器上做運算, 中間卻有著繁雜的溝通流程, 當新增 use case 時需對三層服務都做修改, 無故的浪費了大量的人力和運算資源
   * 另一個更慘的故事是過早採用 SoA 的決策導致開發與測試變的極度困難, 但我懶得寫這段的筆記了所以就這樣吧
 * **FitNess**
   * 這裡講述的是作者經歷過的一段故事, 內容聚瞧於前面幾篇講述的印證, 忘記的話還是直接回去翻翻書吧 (p.163)
 * **Which lines do you draw, and when do you draw them?**
-  * 在重要的事務以及不重要的事務間畫線, 像是 business rule 和 GUI 之間, GUI 跟 DB 之間, DB 以及 business rules 之間。有些人可能會認為 DB 和 business rule 的關係是密不可分的, 但實際上 business rule 並不需要和 DB 有關的任何事物儲如 schema、query language, 他們之間是可以透過抽像的 interface 去做溝通的。
-  * Interface 應該被包含於 business rule, 而 DB Access component 則是在線的另一端, DB Access component 需要明確知道 business rule 但反之則否。
+  * 在重要的事務以及不重要的事務間畫線, 像是 Business Rule 和 GUI 之間, GUI 跟 DB 之間, DB 以及 Business Rules 之間。有些人可能會認為 DB 和 Business Rule 的關係是密不可分的, 但實際上 Business Rule 並不需要和 DB 有關的任何事物儲如 schema、query language, 他們之間是可以透過抽像的 interface 去做溝通的。
+  * Interface 應該被包含於 Business Rule, 而 DB Access component 則是在線的另一端, DB Access component 需要明確知道 Business Rule 但反之則否。
 * **What about input and output?**
   * 由於許多專案裡與使用者是透過 GUI 與系統互動, 造成有時 GUI 會被當成需要最先被決定的事項之一, 但他們忘了一個重要的原則: The IO is irrelevant.
-  * 同上, GUI 需要知道 Business rule, 但反之則否
+  * 同上, GUI 需要知道 Business Rule, 但反之則否
 * **Plugin Architecture**
-  * 跟 Plugin Pattern 的概念相同, 當 Business rule 被清楚切分後, 任何在線另一端的元件都可被視為 plugin 做替換
+  * 跟 Plugin Pattern 的概念相同, 當 Business Rule 被清楚切分後, 任何在線另一端的元件都可被視為 plugin 做替換
 * **The Plugin Argument**
-  * Plugin 的 boundry 能視為一道防火牆, 確保核心的 Business rule 不會被污染
+  * Plugin 的 boundry 能視為一道防火牆, 確保核心的 Business Rule 不會被污染
   * 由於有明確的 boundry, 線兩邊的修改並不影響到對方, 因此每個元件可依照自己的步調做開發與修改
   * 將 project 套用 SRP 將會清楚了解線應該被畫在哪裡
 * **Concolusion**
-  * 首先將 project 分割成不同功能的元件, 再將這些元件做歸納為 business rule 或 plugin, 最後再將依賴關係建立出來 (plugin 單方面依賴 business rule)
+  * 首先將 project 分割成不同功能的元件, 再將這些元件做歸納為 Business Rule 或 plugin, 最後再將依賴關係建立出來 (plugin 單方面依賴 Business Rule)
   * 這種設計概念同 DIP/SAP, 讓較低階的 detail 依賴較高階的 interface 
 
 ### Ch. 18 Boundary Anatomy
+* 
 
 ### Ch. 19 Policy and Level
 
