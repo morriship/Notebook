@@ -110,6 +110,7 @@ description: 'ISBN-13: 9780134494166'
 
 ### Ch. 18 Boundary Anatomy
 * 系統架構的定義為 software components 以及它們之間的 boundaries 的集合
+* 註: 本章節使用到的 level 定義在 Ch.19
 * **Boundary Crossing**
   * **在執行期間一個 function 呼叫了 boundary 另一端的 function 並帶入了些參數**
   * 適當的管理 dependencies (ISP?) 即為畫出良好的 boundary
