@@ -68,7 +68,7 @@ description: 'ISBN-13: 9780134494166'
   * **Independent develop-abillity**
     * 當各元件之間具有獨立性時, 開發將能減少 team 之間的溝通頻率
   * **Independent deployability**
-    * 架構設計足夠好的 project 甚至能對各元件與服務做 hot-swapping
+    * 架構設計足夠好的專案甚至能對各元件與服務做 hot-swapping
 * **Duplication**
   * 工程師經常對相似的程式碼做提煉, 但有時程式碼可能只是恰巧相似而非目的一致, 過一陣子後再來看這段相似的程式碼可能已經出現極大差異
   * **Vertically separating**
@@ -82,11 +82,11 @@ description: 'ISBN-13: 9780134494166'
     * 利用 jar files、DLLs、shared libraries 減少抽換元件的成本 \(rebuild / redeploy\)
   * **Service level**
     * 透過切分 services 減少各元件之間的依賴性
-  * 一個 project 在不同時期可能會需要不同層級的解耦模式, 像是 services 的切分會增加人力與運算資源的開銷, 在運算需求不大時做這些是無意義的。 一個好的架構需要盡量保持解耦的可能性, 並且是可 reverse 的.
+  * 一個專案在不同時期可能會需要不同層級的解耦模式, 像是 services 的切分會增加人力與運算資源的開銷, 在運算需求不大時做這些是無意義的。 一個好的架構需要盡量保持解耦的可能性, 並且是可 reverse 的.
 
 ### Ch. 17 Boundaries Drawing Lines
   
-* 所謂的架構設計就是在元件間畫線(boundry)的藝術, 在開發初期僅會有少數的切分, 主要是避免核心的 Business Rule 被其餘決策污染。銘記架構的設計是為了減少元件間的耦合, 盡量避免和 Business Rule 無關的決策, 像是 fremework、database、web servers、utility libraries、dependency injection 等
+* 所謂的架構設計就是在元件間畫線(boundary)的藝術, 在開發初期僅會有少數的切分, 主要是避免核心的 Business Rule 被其餘決策污染。銘記架構的設計是為了減少元件間的耦合, 盡量避免和 Business Rule 無關的決策, 像是 fremework、database、web servers、utility libraries、dependency injection 等
 * **A coule of sad stories**
   * 在某公司曾經有一個專案, 由於架構師在專案初期就決策將 Business Rule 拆成三層服務, 但運算量需求並不大, 造成雖然三個服務都在同一台機器上做運算, 中間卻有著繁雜的溝通流程, 當新增 use case 時需對三層服務都做修改, 無故的浪費了大量的人力和運算資源
   * 另一個更慘的故事是過早採用 SoA 的決策導致開發與測試變的極度困難, 但我懶得寫這段的筆記了所以就這樣吧
@@ -101,14 +101,31 @@ description: 'ISBN-13: 9780134494166'
 * **Plugin Architecture**
   * 跟 Plugin Pattern 的概念相同, 當 Business Rule 被清楚切分後, 任何在線另一端的元件都可被視為 plugin 做替換
 * **The Plugin Argument**
-  * Plugin 的 boundry 能視為一道防火牆, 確保核心的 Business Rule 不會被污染
-  * 由於有明確的 boundry, 線兩邊的修改並不影響到對方, 因此每個元件可依照自己的步調做開發與修改
+  * Plugin 的 boundary 能視為一道防火牆, 確保核心的 Business Rule 不會被污染
+  * 由於有明確的 boundary, 線兩邊的修改並不影響到對方, 因此每個元件可依照自己的步調做開發與修改
   * 將 project 套用 SRP 將會清楚了解線應該被畫在哪裡
 * **Concolusion**
   * 首先將 project 分割成不同功能的元件, 再將這些元件做歸納為 Business Rule 或 plugin, 最後再將依賴關係建立出來 (plugin 單方面依賴 Business Rule)
   * 這種設計概念同 DIP/SAP, 讓較低階的 detail 依賴較高階的 interface 
 
 ### Ch. 18 Boundary Anatomy
+* 系統架構的定義為 software components 以及它們之間的 boundaries 的集合
+* **Boundary Crossing**
+  * **在執行期間一個 function 呼叫了 boundary 另一端的 function 並帶入了些參數**
+  * 適當的管理 dependencies (ISP?) 即為畫出良好的 boundary
+* **The Dreaded Monolith**
+  * **Monolith** 的一般泛指一個可被執行的完整檔案(可能包含許多靜態連結)
+  * 雖然 boundary 在這類專案的成品中是無法被看到的, 但對元件間的獨立開發與整併還是存在著極大的輔助價值
+  * 元件間 boundary crossing 的設計為 lower-level component 單向依賴 high-level component 提供的 interface. 
+* **Deployment Components**
+  * 這階段的 boundary 切分很直覺的就是畫在動態連結的線上
+* **Threads**
+  * Threads 並不非架構上的 boundary 或 unit, 而是一種執行排程的策略, 可能存在於單一元件或分散於數個元件中
+* **Local Processes**
+  * Local processes 之間一般靠 sockets、mailboxes、message queues 之類方式溝通
+  * Boundary 的畫分跟前述大同小異
+* **Services**
+  * 畫分的方式同上 `Lower-level services should "plug in" to higher-level services`
 
 ### Ch. 19 Policy and Level
 
