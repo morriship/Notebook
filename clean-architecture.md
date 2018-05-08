@@ -93,7 +93,7 @@ description: 'ISBN-13: 9780134494166'
 * **FitNess**
   * 這裡講述的是作者經歷過的一段故事, 內容聚瞧於前面幾篇講述的印證, 忘記的話還是直接回去翻翻書吧 (p.163)
 * **Which lines do you draw, and when do you draw them?**
-  * 在重要的事務以及不重要的事務間畫線, 像是 Business Rule 和 GUI 之間, GUI 跟 DB 之間, DB 以及 Business Rules 之間。有些人可能會認為 DB 和 Business Rule 的關係是密不可分的, 但實際上 Business Rule 並不需要和 DB 有關的任何事物儲如 schema、query language, 他們之間是可以透過抽像的 interface 去做溝通的。
+  * 在重要的元件以及不重要的元件間畫線, 像是 Business Rule 和 GUI 之間, GUI 跟 DB 之間, DB 以及 Business Rules 之間。有些人可能會認為 DB 和 Business Rule 的關係是密不可分的, 但實際上 Business Rule 並不需要知曉和 DB 有關的任何事物儲如 schema、query language, 他們之間是可以透過抽像的 interface 去做溝通的。
   * Interface 應該被包含於 Business Rule, 而 DB Access component 則是在線的另一端, DB Access component 需要明確知道 Business Rule 但反之則否。
 * **What about input and output?**
   * 由於許多專案裡與使用者是透過 GUI 與系統互動, 造成有時 GUI 會被當成需要最先被決定的事項之一, 但他們忘了一個重要的原則: The IO is irrelevant.
