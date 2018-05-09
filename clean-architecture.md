@@ -129,8 +129,17 @@ description: 'ISBN-13: 9780134494166'
   * 畫分的方式同上 `Lower-level services should "plug in" to higher-level services`
 
 ### Ch. 19 Policy and Level
+* **Level**
+* 會因為相同原因(SRP/CCP)被修改的 policies 應該被劃分進相同的 component, 而那些會因為不同理由、在不同時間或為不同層級的 policies 則應該被劃分進不同的 components
+  * **Level** 的定義為 `the distance from the inputs and outputs.`, 和 IO 距離越遠的元件 level 越高
 
 ### Ch. 20 Business Rules
+* Business Rule 就是那些能幫企業賺錢或省錢的程序, 以銀行來說, 借貨的利率就是一個 Business Rule, 而像這種即使不透過電腦也該被實踐的 rules 也被稱為 Critical Business Rule, 它們所使用到的資料則被稱為 Critical Business Data
+* **Entities**
+  * **Entity** 泛指系統中那些僅包含 Critical Business Rule 以及 Critical Business Data 的物件
+* **Use Cases**
+  * A use case describes **_application-specific_** business rules as opposed to the Critical Business Rules within the Entities`
+  * Use case 只定義流程, 和實作無關
 
 ### Ch. 21 Screaming Architecture
 
