@@ -21,27 +21,39 @@ description: 'ISBN-13: 9780134578897'
   * 銘記以下兩點
     * Columns are expensive.
     * Rows are cheap.
-* **Item 4: Store Only One Property per Column **
-* **Item 5: Understand Why Storing Calculated Data is Usually a Bad Idea **
-* **Item 6: Define Foreign Keys to Protect Referential Integrity **
-* **Item 7: Be Sure Your Table Relationships Make Sense **
-* **Item 8: When 3NF Is Not Enough, Normalize More **
-* **Item 9: Use Denormalization for Information Warehouses **
-* **Item 10: **
-* **Item 11: **
-* **Item 12: **
-* **Item 13: **
-* **Item 14: **
-* **Item 15: **
-* **Item 16: **
-* **Item 17: **
-* **Item 18: **
-* **Item 19: **
-* **Item 20: **
-* **Item 21: **
-* **Item 22: **
-* **Item 23: **
-* **Item 24: **
-* **Item 25: **
-* **Item 26: **
-* **Item 27: **
+* **Item 4: Store Only One Property per Column**
+  * 一個 column 只存一筆資訊, 以地址為例, 不要用 address 一個欄位存下所有地址資訊, 最好明確分存成 country / city / street 等等欄位, 需要使用時再用 CONCAT 組出原先的句子 (用 View 似乎也不錯?)
+* **Item 5: Understand Why Storing Calculated Data is Usually a Bad Idea**
+* **Item 6: Define Foreign Keys to Protect Referential Integrity**
+* **Item 7: Be Sure Your Table Relationships Make Sense**
+* **Item 8: When 3NF Is Not Enough, Normalize More**
+* **Item 9: Use Denormalization for Information Warehouses**
+
+### Ch 2: Programmability and Index Design
+
+* **Item 10: Factor in Nulls When Creating Indexes**
+* **Item 11: Carefully Consider Creation of Indexes to Minimize Index and Data Scanning**
+* **Item 12: Use Indexes for More than Just Filtering**
+* **Item 13: Don't Go Overboard with Triggers**
+* **Item 14: Consider Using a Filtered Index to Include or Exclude a Subset of Data**
+* **Item 15: Use Declarative Constraints Instead of Programming Checks**
+* **Item 16: Know Which SQL Dialect Your Product Uses and Write Accordingly**
+* **Item 17: Know When to Use Calculated Results in Indexes**
+
+### Ch 3: When You Can't Change the Design
+
+* **Item 18: Use Views to Simplify What Cannot Be Changed**
+* **Item 19: Use ETL to Turn Nonrelational Data into Information**
+* **Item 20: Create Summary Tables and Maintain Them**
+* **Item 21: Use UNION Statements to "Unpivot" Non-normalized Data**
+
+### Ch 4: Filtering and Finding Data
+
+* **Item 22: Understand Relational Algebra and How It is Implemented in SQL**
+* **Item 23: Find Non-matches or Missing Records**
+* **Item 24: Know When to Use CASE to Solve a Problem**
+* **Item 25: Know Techniques to Solve Multiple-Criteria Problems**
+* **Item 26: Divide Your Data If You Need a Perfect Match**
+* **Item 27: Know How to Correctly Filter a Range of Dates on a Column Containing Both Date and Time**
+* **Item 28: Write Sargable Queries to Ensure That the Engine Will Use Indexes**
+* **Item 29: Correctly Filter the "Right" Side of a "Left" Join**
