@@ -142,8 +142,21 @@ description: 'ISBN-13: 9780134494166'
   * Use case 只定義流程, 和實作無關
 
 ### Ch. 21 Screaming Architecture
+* 一個好的架構必須讓使用者只需瀏覽檔案目錄時即可認知道此專案的目的為何, 而不是讓使用者了解你用了什麼 Framework
 
 ### Ch. 22 The Clean Architecture
+* 書中列舉了幾個設計思維(但沒解釋): Hexagonal Architecture、DCI、BCE, 並提到其共通點
+  * **Independent of frameworks**
+  * **Testable**
+  * **Independent of the UI**
+  * **Independent of the database**
+  * **Independent of any external agency**
+* **The Dependency Rule**
+  * 架構的程現會是一個同心圓, 從內到外分別為
+    * **Enterprise Business Rule**: Entities
+    * **Application Business Rule**: Use Cases
+    * **Interface Adapters**: Controllers、Presenters、Gateways
+    * **Frameworks & Drivers**: UI、Web、DB、Devices、Externam Interfaces
 
 ### Ch. 23 Presenters and Humble Objects
 
