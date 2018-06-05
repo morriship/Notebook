@@ -142,7 +142,7 @@ description: 'ISBN-13: 9780134494166'
   * Use case 只定義流程, 和實作無關
 
 ### Ch. 21 Screaming Architecture
-* 一個好的架構必須讓使用者只需瀏覽檔案目錄時即可認知道此專案的目的為何, 而不是讓使用者了解你用了什麼 Framework
+* 一個好的架構必須讓使用者只需瀏覽檔案目錄時即可認知道此專案的目的為何, 而不是了解你用了什麼 Framework
 
 ### Ch. 22 The Clean Architecture
 * 書中列舉了幾個設計思維(但沒解釋): Hexagonal Architecture、DCI、BCE, 並提到其共通點
@@ -152,13 +152,28 @@ description: 'ISBN-13: 9780134494166'
   * **Independent of the database**
   * **Independent of any external agency**
 * **The Dependency Rule**
-  * 架構的程現會是一個同心圓, 從內到外分別為
+  * 架構的呈現應該是一個同心圓, 內層元件不該了解外層元件的存在, 也不該被其影響
+  * 從內到外分別為
     * **Enterprise Business Rule**: Entities
+      * 封裝著最關鍵的商業邏輯, 可能以不同的形式呈現 (object, set of data startures, functions)
     * **Application Business Rule**: Use Cases
+      * 包含著 application-specific business rule, 利用與 entities 的交流實現
     * **Interface Adapters**: Controllers、Presenters、Gateways
+      * 這層的目的主要是 Frameworks & Drivers 與 Use Cases 之間的橋梁(adapter), 負責將取得的資料轉換至以適合另一方的形式輸出 
     * **Frameworks & Drivers**: UI、Web、DB、Devices、Externam Interfaces
+      * 基本上不會放過多的心思在這層 (?)
+  * 依照架構的設計可以不只有四層, 但依賴關係始終為由外向內, 越往內層級越高
+  * 當出現內層需要依賴外層時可套用 DIP, 在內層定義 interface 並由外層實現, 最終雙方僅需依賴內層定義的 interface
+  * 每層之間傳遞的資料格式盡量保持簡單, 不要將 DB 拿回來的 raw data 直接傳遞給內層, 或是將 entities 回傳至外層
 
 ### Ch. 23 Presenters and Humble Objects
+* **Humble Object pattern**
+  * 將元件中不易被測試的部份分離為另一個獨立元件, 藉此讓剩下的部份可以輕易被測試, 被分離出的部份稱做 **Humble Object**
+* **Presenters and Views**
+  * **Presenter**: 負責將 Use Cases 回傳的資料轉換為適當形式存至 ViewModel 並交由 View 呈現
+  * **View**: 由 Presenter 經由 **Humble Object pattern** 分離出的 **Humble object**, 負責資料呈現部份
+* **Database Gateways**
+  * Use Cases 與 Database 之間會有一層 Database Gateway, 主要是透過 interface 將 DB Query 與 Use Cases 隔離, 以確保 Use Cases 可被測試
 
 ### Ch. 24 Partial Boundaries
 
