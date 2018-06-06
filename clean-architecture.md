@@ -174,8 +174,22 @@ description: 'ISBN-13: 9780134494166'
   * **View**: 由 Presenter 經由 **Humble Object pattern** 分離出的 **Humble object**, 負責資料呈現部份
 * **Database Gateways**
   * Use Cases 與 Database 之間會有一層 Database Gateway, 主要是透過 interface 將 DB Query 與 Use Cases 隔離, 以確保 Use Cases 可被測試
+* **Data Mappers**
+  * 一般來說在架構上講 ORM 是不直覺的, 對使用者來說他們看到的是 data structure 而不是一個包著各種操作行為的 object, 所以用 Data Mapper 會更合適
+* **Service Listeners**
+  * 在這種狀況下 listeners 會將接收到的資料包裝成一個 data structure, 再交付給其他層做使用
+* **Conclusion**
+  * 在架構各層的 boundary 一般都會存在著可套用 Humble Object pattern 的元件, 適當的應用這個 pattern 可以增加元件被測試的可能性
 
 ### Ch. 24 Partial Boundaries
+* 在某些情況下會在元件中預先保留可被完全分割的部份(可被獨立 compile / deploy), 以確保未來切割(如 scale up)時不需要費太多工
+  * **Skip The Last Step**
+    * 顧名思義, 將元件間做包含 IO 的完整的分割, 只差沒有獨立成兩個元件
+    * 此舉跟直接開發兩個獨立元件所需耗費的工程基本上是相同的, 並且會因為時間關係造成部份 dependencies 跨越了 boudary, 而必須再做重新切割
+  * **One-Dimensional Boundaries**
+    * 讓 client 依賴 Service 提供的 interface
+  * **Facades**
+    * 由一個 Facade object 提供對 client 的所有接口, 封裝所有與 service 的互動
 
 ### Ch. 25 Layers and Boundaries
 
