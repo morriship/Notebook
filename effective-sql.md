@@ -24,7 +24,14 @@ description: 'ISBN-13: 9780134578897'
 * **Item 4: Store Only One Property per Column**
   * 一個 column 只存一筆資訊, 以地址為例, 不要用 address 一個欄位存下所有地址資訊, 最好明確分存成 country / city / street 等等欄位, 需要使用時再用 CONCAT 組出原先的句子 (用 View 似乎也不錯?)
 * **Item 5: Understand Why Storing Calculated Data is Usually a Bad Idea**
+  * 與 Trigger 相比, Calculated Column 一般來說較易實現並且具有較高的效能
+  * Calculated Column 可被優化程度依以下兩種狀態區別
+    1. Deterministic: 依相同 Table 的不同欄位為依據所建立, 可建立 index 以提高查詢的效能
+    1. Nondeterministic: 資料源有來自於其他 table, 不能建立 index, 每次查詢都會重新運算
+  * 用 View 替代 Calculated Column 在多數情況下算是一個可優先被考量的選擇
 * **Item 6: Define Foreign Keys to Protect Referential Integrity**
+  * 用 Foreign Keys 建立表單的關聯性以及確保資料完整
+  * 用 `ON UPDATE CASCADE`、`ON DELETE CASCADE` 輔助 table 間增刪及修改時的互動
 * **Item 7: Be Sure Your Table Relationships Make Sense**
 * **Item 8: When 3NF Is Not Enough, Normalize More**
 * **Item 9: Use Denormalization for Information Warehouses**
